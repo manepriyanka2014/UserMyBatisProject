@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.knimbus.dao.UserMapper">
+	
+	<resultMap type="user" id="result">
+		<id property="userId" column="user_id" />
+		<result property="userName" column="user_name" />
+		<result property="password" column="password" />
+		<result property="email" column="email" />
+		<result property="age" column="age" />
+		<result property="state" column="state" />
+		<result property="city" column="city" />
+		<result property="pincode" column="pincode" />
+		<result property="roleId" column="role_id" />
+	</resultMap>
+	
+	<resultMap type="userRole" id="roleResultMap">
+		<id property="roleId" column="role_id" />
+		<result property="roleName" column="role" />
+	</resultMap>
+	
+	<select id="getById" parameterType="int" resultMap = "result">
+      SELECT * FROM user WHERE user_id = #{userId};
+   </select>
+   
+   <select id="getUserByEmailId" parameterType="String" resultMap = "result">
+     SELECT * FROM user WHERE email = #{email};
+   </select>
+   
+   
+		<select id="getAllUser" resultType="user" resultMap="result">
+		SELECT * FROM user
+	</select>
+	
+	<insert id="createUser" parameterType="user" useGeneratedKeys="true" keyProperty="userId">
+		INSERT INTO user(user_name, password, email, age, state, city, pincode, role_id)
+		VALUES(#{userName}, #{password}, #{email}, #{age}, #{state}, #{city}, #{pincode}, #{roleId})
+	</insert>
+	
+	<update id="updateUser" parameterType="user">
+		UPDATE user SET user_name = #{userName}, password = #{password}, email = #{email}, age = #{age}, state = #{state}, city = #{city}, pincode = #{pincode}, role_id = #{roleId} 
+		WHERE user_id = #{userId};
+	</update>
+	
+	<delete id="deleteUser" parameterType="int">
+		DELETE FROM USER WHERE user_id = #{userId}
+	</delete>
+	
+	<select id="validateUserCredential" parameterType="user" resultMap="result">
+       SELECT * FROM USER WHERE email = #{email} 
+    </select>
+    
+    
+    <update id="resetPassword" parameterType="user">
+		UPDATE USER SET password = #{password}
+		WHERE email = #{email} 
+	</update>
+    
+    <select id="validateUserRole" parameterType="int" resultMap="roleResultMap">
+       select ur.role  
+       from user u join user_role ur on u.role_id=ur.role_id
+       where u.user_id=#{id}
+    </select>
+    </mapper>

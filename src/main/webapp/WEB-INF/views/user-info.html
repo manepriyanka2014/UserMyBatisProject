@@ -1,0 +1,59 @@
+<div class="cart-card">
+    <div class="info">
+        <span class="title2">User Details</span>
+
+        <div class="input-row">
+            <label class="label"> Name </label>
+            <input class="cart-input" ng-model="ctrl.userDetails.userName" type="text"
+                placeholder="Enter your Name">
+        </div>
+        <div class="input-row">
+            <label class="label">Password</label>
+            <input class="cart-input" ng-model="ctrl.userDetails.password" type="password"
+                   placeholder="** Enter your password **">
+        </div>
+
+        <div class="input-row">
+            <label class="label">Email ID</label>
+            <input class="cart-input" ng-model="ctrl.userDetails.email" type="email"
+                placeholder="Enter your Email ID">
+        </div>
+        <div class="input-row">
+            <label class="label">Age</label>
+            <input class="cart-input" ng-model="ctrl.userDetails.age" type="number"
+                placeholder="Enter your age">
+        </div>
+        <div class="input-row">
+            <label class="label">Pin code</label>
+            <input class="cart-input" ng-keyup="ctrl.fetchPostalInfo(ctrl.userDetails.pinCode)" ng-model="ctrl.userDetails.pinCode" type="number"
+                placeholder="Enter your Pin Code">
+            <div class="col-lg-12 col-sm-12 col-xs-12 alert alert-danger" ng-show="ctrl.postalCodeNotFoundMessagebool">
+                <strong>{{ctrl.postalCodeNotFoundMessage}}</strong>
+            </div>
+        </div>
+        <div class="input-row">
+            <label class="label">State</label>
+            <input class="input2" ng-model="ctrl.userDetails.state" type="text"
+                placeholder="Enter your State">
+        </div>
+        <div class="input-row">
+            <label class="label">City</label>
+            <input class="cart-input" ng-model="ctrl.userDetails.city" type="text"
+                placeholder="Enter your City">
+        </div>
+        <div class="input-row">
+            <label class="label">roleId</label>
+            <input class="cart-input" ng-model="ctrl.userDetails.roleId" type="number"
+                   placeholder="Enter roleId">
+        </div>
+    </div>
+
+    <button class="continue" ng-click="ctrl.createUser()"> submit </button>
+    <div class="message2" ng-show="ctrl.successUserAddedMessagebool">
+         <strong>{{ ctrl.successUserAddedMessage }}</strong>
+    </div>
+    <div class="message2" ng-show="ctrl.failedUserAddedMessagebool">
+        <strong>{{ ctrl.failedUserAddedMessage }}</strong>
+   </div>
+    
+</div>

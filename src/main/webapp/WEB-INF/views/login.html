@@ -1,0 +1,25 @@
+<div ng-show="error" class="alert alert-danger">{{error}}</div>
+<form name="form" ng-submit="ctrl.login()" role="form">
+    <div class="form-group">
+        <label for="email">Email ID</label>
+        <input type="text" name="email" id="email" class="form-control" ng-model="ctrl.loginDetails.email" required/>
+        <span ng-show="form.email.$dirty && form.email.$error.required" class="help-block">EmailId is required</span>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" class="form-control" ng-model="ctrl.loginDetails.password"
+               required/>
+        <span ng-show="form.password.$dirty && form.password.$error.required"
+              class="help-block">Password is required</span>
+    </div>
+    <div class="form-actions">
+        <button class="continue" ng-click="ctrl.loginUser(ctrl.getAllUser)"> Login</button>
+
+        <div class="message2" ng-show="ctrl.successUserLoggedInMessageBool">
+            <strong>{{ ctrl.successUserLoggedInMessage }}</strong>
+        </div>
+        <div class="message2" ng-show="ctrl.failedUserLoggedInMessageBool">
+            <strong>{{ ctrl.failedUserLoggedInMessage }}</strong>
+        </div>
+    </div>
+</form>

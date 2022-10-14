@@ -1,0 +1,12 @@
+com\knimbus\dao\UserMapper.class
+com\knimbus\model\User.class
+com\knimbus\service\IUserService.class
+com\knimbus\config\AppConfiguration.class
+com\knimbus\config\SwaggerDocumentationConfig.class
+com\knimbus\model\UserRole.class
+com\knimbus\controller\UserController.class
+com\knimbus\config\MyBatisSqlSessionConfiguration.class
+com\knimbus\dto\UserDto.class
+com\knimbus\exceptionHandler\UserAlreadyExistException.class
+com\knimbus\service\impl\UserService.class
+com\knimbus\controller\MainController.class
